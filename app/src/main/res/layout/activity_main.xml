@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:paddingHorizontal="15dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_random_facts_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/random_facts_about_numbers"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/btn_math"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_random_facts_label"
+        android:text="@string/math"
+        style="@style/buttons"/>
+    <LinearLayout
+        android:id="@+id/lyt_math"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/btn_math"
+        android:visibility="gone"
+        android:weightSum="100">
+        <TextView
+            android:id="@+id/tv_math_fact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="70"
+            android:textColor="@color/white"/>
+
+        <ImageButton
+            android:id="@+id/btn_update_math"
+            style="@style/update_button"
+             />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/lyt_math"
+        style="@style/buttons"
+        android:text="@string/date"/>
+    <LinearLayout
+        android:id="@+id/lyt_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="100"
+        app:layout_constraintTop_toBottomOf="@id/btn_date">
+
+        <TextView
+            android:id="@+id/tv_date_fact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="70"
+            android:textColor="@color/white"/>
+
+        <ImageButton
+            android:id="@+id/btn_update_date"
+            style="@style/update_button"
+             />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/lyt_date"
+        style="@style/buttons"
+        android:text="@string/year"/>
+    <LinearLayout
+        android:id="@+id/lyt_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="100"
+        app:layout_constraintTop_toBottomOf="@id/btn_year">
+
+        <TextView
+            android:id="@+id/tv_year_fact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="70"
+            android:textColor="@color/white"/>
+
+        <ImageButton
+            android:id="@+id/btn_update_year"
+            style="@style/update_button"
+             />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_trivia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/lyt_year"
+        style="@style/buttons"
+        android:text="@string/trivia"/>
+    <LinearLayout
+        android:id="@+id/lyt_trivia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="100"
+        app:layout_constraintTop_toBottomOf="@id/btn_trivia">
+
+        <TextView
+            android:id="@+id/tv_trivia_fact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="70"
+            android:textColor="@color/white"/>
+
+        <ImageButton
+            android:id="@+id/btn_update_trivia"
+            style="@style/update_button"/>
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/btn_update_facts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/buttons"
+        android:layout_marginBottom="15dp"
+        android:text="@string/update_facts"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Funumber</string>
+    <string name="random_facts_about_numbers">Random facts about numbers:</string>
+    <string name="math">Math</string>
+    <string name="date">Date</string>
+    <string name="year">Year</string>
+    <string name="trivia">Trivia</string>
+    <string name="update_facts">Update facts</string>
+</resources>
