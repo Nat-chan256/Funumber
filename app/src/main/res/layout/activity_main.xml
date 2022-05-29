@@ -38,7 +38,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="70"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:text="@string/math_initial_fact"/>
 
         <ImageButton
             android:id="@+id/btn_update_math"
@@ -68,7 +69,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="70"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:text="@string/date_initial_fact"/>
 
         <ImageButton
             android:id="@+id/btn_update_date"
@@ -97,7 +99,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="70"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:text="@string/year_initial_fact"/>
 
         <ImageButton
             android:id="@+id/btn_update_year"
@@ -127,7 +130,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="70"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:text="@string/trivia_initial_fact"/>
 
         <ImageButton
             android:id="@+id/btn_update_trivia"

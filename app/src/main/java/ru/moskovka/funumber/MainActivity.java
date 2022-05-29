@@ -7,8 +7,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -21,6 +23,7 @@ import ru.moskovka.funumber.data.Serializer;
 import ru.moskovka.funumber.network.NetworkService;
 import ru.moskovka.funumber.network.NumberApi;
 import ru.moskovka.funumber.util.ConnectionChecker;
+import ru.moskovka.funumber.util.StringKeys;
 import ru.moskovka.funumber.util.UIUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -56,6 +59,22 @@ public class MainActivity extends AppCompatActivity {
         handleUpdateButtonsClick();
     }
 
+    @Override
+    protected void onStop() {
+        try {
+            Serializer.serialize(this, new HashMap<String, String>(){{
+                put(StringKeys.MATH, (String) tvMathFact.getText());
+                put(StringKeys.DATE, (String) tvDateFact.getText());
+                put(StringKeys.YEAR, (String) tvYearFact.getText());
+                put(StringKeys.TRIVIA, (String) tvTriviaFact.getText());
+            }});
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        super.onStop();
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////Utility methods//////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////
@@ -84,10 +103,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void deserializeFacts() throws IOException {
         Map<String, String> facts = Serializer.deserialize(this);
-        tvMathFact.setText(facts.get("math"));
-        tvDateFact.setText(facts.get("date"));
-        tvYearFact.setText(facts.get("year"));
-        tvTriviaFact.setText(facts.get("trivia"));
+        tvMathFact.setText(facts.get(StringKeys.MATH));
+        tvDateFact.setText(facts.get(StringKeys.DATE));
+        tvYearFact.setText(facts.get(StringKeys.YEAR));
+        tvTriviaFact.setText(facts.get(StringKeys.TRIVIA));
     }
 
     private void handleUpdateButtonsClick(){
@@ -124,6 +143,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadFact(Call<ResponseBody> myCall, TextView textView){
+        if (!ConnectionChecker.isConnectedToInternet(this)){
+            Toast.makeText(
+                    this,
+                    "Device is not connected to Internet",
+                    Toast.LENGTH_SHORT
+            ).show();
+            return;
+        }
         myCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(
@@ -145,6 +172,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadFactsViaInternet() throws ExecutionException, InterruptedException {
+        if (!ConnectionChecker.isConnectedToInternet(this)){
+            Toast.makeText(
+                    this,
+                    "Device is not connected to Internet",
+                    Toast.LENGTH_SHORT
+            ).show();
+            return;
+        }
         loadFact(numberApi.getMathRandomFact(), tvMathFact);
         loadFact(numberApi.getDateRandomFact(), tvDateFact);
         loadFact(numberApi.getYearRandomFact(), tvYearFact);
